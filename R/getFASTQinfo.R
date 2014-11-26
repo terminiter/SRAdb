@@ -17,7 +17,7 @@ function (in_acc, srcType = 'ftp') {
 	sra_acc = sraConvert( in_acc,  sra_con=sra_con  )
 	
 	sra_acc_run = paste("'", paste(sra_acc$run, collapse = "','"),"'", sep="");
-	sql <- paste ("SELECT * FROM fastqlist WHERE fastqlist_accession IN (", sra_acc_run, ")", sep = "");				  			 
+	sql <- paste ("SELECT * FROM fastq WHERE run_accession IN (", sra_acc_run, ")", sep = "");				  			 
 	rs_fq <- dbGetQuery(sra_con, sql);	
 	names(rs_fq) <- sub('_accession', '', names(rs_fq))
 	names(rs_fq) <- sub('file_name', 'ftp', names(rs_fq))	
