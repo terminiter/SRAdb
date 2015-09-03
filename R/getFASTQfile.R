@@ -7,9 +7,9 @@
 # getFASTQfile ( in_acc = c("SRR000648","SRR000657"), destDir = getwd(), srcType='ftp', makeDirectory=FALSE, method='curl', ascpCMD )
 
 getFASTQfile <-
-function (in_acc, destDir=getwd(), srcType='ftp', makeDirectory=FALSE, method='curl', ascpCMD=NULL) 
+function (in_acc, sra_con, destDir=getwd(), srcType='ftp', makeDirectory=FALSE, method='curl', ascpCMD=NULL) 
 {	
-	sraFiles = getFASTQinfo( in_acc, srcType ) 
+	sraFiles = getFASTQinfo( in_acc, sra_con, srcType ) 
 	
 	if ( makeDirectory==TRUE && !file.exists(destDir) ) {
 	    tryCatch(dir.create( destDir ),
